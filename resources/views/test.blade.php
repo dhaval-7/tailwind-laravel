@@ -1,65 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Menu with Hover on Header</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+@extends('layouts.app')
+@section('main')
+    <div class="py-20 h-screen bg-gray-300 px-2">
+        <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+            <div class="md:flex">
+                <div class="w-full p-3">
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: relative;
-        }
+                    <div class="relative">
+                        <i class="absolute fa fa-search text-gray-400 top-5 left-4"></i>
+                        <input type="text" id="search-input" placeholder="Search..."
+                            class="bg-white h-14 w-full px-12 rounded-lg focus:outline-none hover:cursor-pointer"
+                            name="">
+                        <span class="absolute top-4 right-5 border-l pl-4"><i
+                                class="fa fa-microphone text-gray-500 hover:text-green-500 hover:cursor-pointer"></i></span>
+                    </div>
+                    {{-- @include('list') --}}
+                    <ul id="search-results"> </ul>
+                </div>
+            </div>
+        </div>
 
-        .mega-menu {
-            width: 50%;
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.5s;
-        }
-
-        header:hover .mega-menu {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .mega-menu a {
-            text-decoration: none;
-            color: #333;
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Your Website</h1>
-    <div class="mega-menu">
-        <a href="#">Menu Item 1</a>
-        <a href="#">Menu Item 2</a>
-        <a href="#">Menu Item 3</a>
-        <!-- Add more menu items as needed -->
     </div>
-</header>
 
-<!-- Your content goes here -->
 
-</body>
-</html>
+    {{-- <div class="search-container mt-5">
+        <input type="text" id="search-input" placeholder="Search...">
+        <ul id="search-results"></ul>
+    </div> --}}
+
+    <!-- Add this inside the body of your HTML -->
+    {{-- <li class="result-item">
+        <span class="result-text"></span>
+    </li> --}}
+    <script type="text/template" id="result-template">
+
+    <div class="py-1">
+        <div class="hover:bg-gray-200 cursor-pointer bg-white shadow flex p-5 items-center mb-5 rounded-lg">
+            <div class="w-1/2">
+                <div class="flex items-center">
+                    <img :src="contact.picture.thumbnail" class="rounded-full">
+                    <div class="ml-4">
+                        <span class="result-text" class="capitalize block text-gray-800">{{ $contact ?? 'test' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</script>
+@endsection

@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::view('/' , 'test');
 
+use App\Http\Controllers\SearchController;
+
+Route::get('/search/{q}', [SearchController::class, 'search'])->name('search');
+
 Route::view('/' , 'test');
 
 // Route::view('/' , 'home');
